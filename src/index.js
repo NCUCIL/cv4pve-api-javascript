@@ -7690,18 +7690,11 @@ class PVEVmidQemuNodeNodesClone {
   * @param {string} target Target node. Only allowed if the original VM is on shared storage.
   * @returns {Result}
   */
-  async cloneVm(newid, bwlimit, description, format, full, name, pool, snapname, storage, target) {
+  async cloneVm(newid, description, name) {
     const parameters = {
       'newid': newid,
-      'bwlimit': bwlimit,
       'description': description,
-      'format': format,
-      'full': full,
       'name': name,
-      'pool': pool,
-      'snapname': snapname,
-      'storage': storage,
-      'target': target
     };
     return await this.#client.create(`/nodes/${this.#node}/qemu/${this.#vmid}/clone`, parameters);
   }
